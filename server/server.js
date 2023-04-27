@@ -3,13 +3,16 @@ const express = require("express");
 const cors = require("cors");
 const { MongoClient} = require('mongodb');
 const redis = require('redis');
-
+const dotenv = require('dotenv');
+dotenv.config();
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-const cl = new MongoClient(`mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@${process.env.URL}/?retryWrites=true&w=majority`);
-console.log(cl)
+const cl = new MongoClient(`mongodb+srv://${process.env.USERNAME}:${process.env.PASSWORD}@${process.env.URL}/?retryWrites=true&w=majority`);
+console.log(process.env.USERNAME)
+console.log(process.env.PASSWORD)
+console.log(process.env.URL)
 var client = redis.createClient({
     socket: { host: "redis-16618.c305.ap-south-1-1.ec2.cloud.redislabs.com",
   port: 16618
