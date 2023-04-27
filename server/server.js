@@ -8,7 +8,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const cl = new MongoClient("mongodb+srv://sanjayinfortech:Sanjay1860@cluster0.dxo7ihi.mongodb.net/?retryWrites=true&w=majority");
+const cl = new MongoClient(`mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@${process.env.URL}/?retryWrites=true&w=majority`);
+console.log(cl)
 var client = redis.createClient({
     socket: { host: "redis-16618.c305.ap-south-1-1.ec2.cloud.redislabs.com",
   port: 16618
